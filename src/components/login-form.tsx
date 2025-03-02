@@ -7,6 +7,9 @@ import { Label } from "@/components/ui/label"
 import { useState } from "react"
 import axios from "axios";
 import { useNavigate } from "react-router"
+import { useDispatch } from "react-redux"
+import { setProfile, setToken, setUser } from "@/redux/slice/userReducer"
+
 
 export function LoginForm({
   className,
@@ -17,6 +20,7 @@ export function LoginForm({
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const dispatch = useDispatch(); 
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,11 +30,12 @@ export function LoginForm({
         "https://news-cms-27-12-2024.onrender.com/api/v1/login",
         { email, password }
       );
-  
-      console.log(res);
-  
       if (res.status === 200) {
         toast.success(res.data.message);
+        dispatch(setToken(res.data.token));
+        dispatch(setProfile(res.data.data));
+        dispatch(setUser(res.data.data.name));
+
         navigate("/dashboard");
       }
     } catch (error) {
