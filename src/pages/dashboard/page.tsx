@@ -1,21 +1,4 @@
-import { AppSidebar } from "@/components/app-sidebar"
-import { ModeToggle } from "@/components/mode-toggle"
-import { User, DollarSign, ShoppingCart, TrendingUp } from "lucide-react";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb"
-import { Separator } from "@/components/ui/separator"
-import {
-  SidebarInset,
-  SidebarProvider,
-  SidebarTrigger,
-} from "@/components/ui/sidebar"
-import {DropdownMenu} from "@/components/ui/dropdown-menu"
+import { DollarSign, ShoppingCart, TrendingUp, User } from "lucide-react";
 
 export default function Page() {
   const stats = [
@@ -25,31 +8,7 @@ export default function Page() {
     { title: "Performance", value: 882, bg: "bg-red-100", icon: <TrendingUp className="text-red-500" size={24} /> },
   ];
   return (
-    <SidebarProvider>
-      <AppSidebar />
-      <SidebarInset>
-        <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12">
-          <div className="flex items-center gap-2 px-4">
-            <SidebarTrigger className="-ml-1" />
-            <Separator orientation="vertical" className="mr-2 h-4" />
-            <Breadcrumb>
-              <BreadcrumbList>
-                <BreadcrumbItem className="hidden md:block">
-                  <BreadcrumbLink href="#">
-                    Building Your Application
-                  </BreadcrumbLink>
-                </BreadcrumbItem>
-                <BreadcrumbSeparator className="hidden md:block" />
-                <BreadcrumbItem>
-                  <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-                </BreadcrumbItem>
-              </BreadcrumbList>
-            </Breadcrumb>
-          </div>
-          <div className="ml-auto flex items-center gap-2 px-5">
-            <ModeToggle/>
-          </div>
-        </header>
+    
         <div className="flex flex-1 flex-col gap-6 p-6 bg-gray-100 min-h-screen">
           {/* Stats Section */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
@@ -82,8 +41,6 @@ export default function Page() {
             <p className="text-gray-600 mt-2">This is a simple layout with stats, cards, and a content section.</p>
           </div>
         </div>
-      </SidebarInset>
-    </SidebarProvider>
   );
 }
 

@@ -1,26 +1,14 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import App from './App';
-import Login from '@/pages/login';
-import { useSelector } from 'react-redux';
+import { Routes, Route } from 'react-router-dom';
+import UserList from './pages/user/userList';
+import Dashboard from './pages/dashboard/page';
 
 export const Router = () => {
-  const token = useSelector((state) => state.user.token);
+  
 
   return (
-    <BrowserRouter>
-      <Routes>
-        {token ? (
-          <>
-            <Route path="/dashboard" element={<App />} />
-            <Route path="*" element={<Navigate to="/dashboard" />} />
-          </>
-        ) : (
-          <>
-            <Route path="/login" element={<Login />} />
-            <Route path="*" element={<Navigate to="/login" />} />
-          </>
-        )}
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/dashboard" element={<Dashboard/>} />
+      <Route path="/users" element={<UserList/>} />
+    </Routes>
   );
 };
