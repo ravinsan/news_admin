@@ -33,15 +33,15 @@ export function NavMain({
   }[]
 }) {
   return (
-    <SidebarGroup>
-      <SidebarGroupLabel>Platform</SidebarGroupLabel>
+    <SidebarGroup className="text-white">
+      <SidebarGroupLabel className="text-white">Platform</SidebarGroupLabel>
       <SidebarMenu>
         {items.map((item) => (
           <Collapsible
             key={item.title}
             asChild
             defaultOpen={item.isActive}
-            className="group/collapsible"
+            className="text-white group/collapsible"
           >
             <SidebarMenuItem>
               <CollapsibleTrigger asChild>
@@ -55,7 +55,7 @@ export function NavMain({
                 <SidebarMenuSub>
                   {item.items?.map((subItem) => (
                     <SidebarMenuSubItem key={subItem.title}>
-                      <SidebarMenuSubButton asChild>
+                      <SidebarMenuSubButton className="text-white" asChild>
                         <a href={subItem.url}>
                           <span>{subItem.title}</span>
                         </a>
